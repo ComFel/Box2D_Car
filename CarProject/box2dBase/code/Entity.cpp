@@ -18,7 +18,7 @@ using namespace std;
 
 namespace operations
 {
-    shared_ptr<Entity> Entity::create_edge(Scene* scene, b2BodyType body_type, float x0, float y0, float x1, float y1, bool isSensor)
+    shared_ptr<Entity> Create_Edge(Scene* scene, b2BodyType body_type, float x0, float y0, float x1, float y1, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -49,7 +49,7 @@ namespace operations
         return body;
     }    
     
-    shared_ptr<Entity> Entity::create_circle(Scene* scene, b2BodyType body_type, float x, float y, float radius, bool isSensor)
+    shared_ptr<Entity> Create_Circle(Scene* scene, b2BodyType body_type, float x, float y, float radius, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -78,7 +78,7 @@ namespace operations
         return body;
     }
         
-    shared_ptr<Entity> Entity::create_box(Scene* scene, b2BodyType body_type, float x, float y, float width, float height, float radians, bool isSensor)
+    shared_ptr<Entity> Create_Box(Scene* scene, b2BodyType body_type, float x, float y, float width, float height, float radians, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -111,7 +111,7 @@ namespace operations
         return body;
     }
 
-    b2RevoluteJoint* Entity::create_revolute_joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, bool enabledMotor)
+    b2RevoluteJoint* Create_Revolute_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, bool enabledMotor)
     {
         b2RevoluteJointDef revolut;
 
@@ -124,7 +124,7 @@ namespace operations
         return dynamic_cast<b2RevoluteJoint*>(scene->get_world().CreateJoint(&revolut));
     }
     
-    b2WheelJoint* Entity::create_wheel_joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, float motorSpeed, float torque, bool isEnabled)
+    b2WheelJoint* Create_Wheel_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, float motorSpeed, float torque, bool isEnabled)
     {
         b2WheelJointDef wheel;
 
@@ -140,7 +140,7 @@ namespace operations
         return dynamic_cast<b2WheelJoint*>(scene->get_world().CreateJoint(&wheel));
     }
 
-    shared_ptr<Entity> Entity::create_carBaseShape(Scene* scene, b2BodyType body_type, float x, float y)
+    shared_ptr<Entity> Create_CarBaseShape(Scene* scene, b2BodyType body_type, float x, float y)
     {
         shared_ptr < Entity > body(new Entity());
 

@@ -25,19 +25,17 @@ using namespace sf;
 
 #pragma once
 
-namespace operations {
-    class Vehicle
-    {  
-    public:
-        //Constructor base del vehículo
-        Vehicle(b2World& physics_world);
 
-        //WIP
-        void CreateCarCest(b2World& physics_world, float x, float y) {} //b2Body*
+class Vehicle
+{  
+public:
+    //Constructor base del vehículo
+    Vehicle(b2World& physics_world);
 
-        //Creamos un rueda
-        b2Body* CreateWheel(b2World& physics_world, float x, float y, float radius) { return 0; };
+    //WIP
+    void CreateCarCest(b2World& physics_world, float x, float y) {} //b2Body*
 
-    };
+    //Creamos un rueda
+    b2Body* CreateWheel(b2World& physics_world, float x, float y, float radius) { return 0; };
 
-}
+};

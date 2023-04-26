@@ -28,20 +28,20 @@ namespace operations
 		createRamp();
 
 		// Contenedor bolas
-		entityMap["containerJoint"] = Entity::create_circle(this, b2_kinematicBody, 12, 3.f, .15f, false);
-		entityMap["ballsColumn"] = Entity::create_box(this, b2_staticBody, 12.f, 1.5f, 0.1f, 1.5f, 0.f, true);
-		entityMap["rotatedBox_r"] = Entity::create_box(this, b2_dynamicBody, 12.55f, 3.5f, 0.8f, 0.1f, 0.7854f, false);
-		entityMap["rotatedBox_l"] = Entity::create_box(this, b2_dynamicBody, 11.45f, 3.5f, 0.8f, 0.1f, -0.7854f, false);
+		entityMap["containerJoint"] = Entity::Create_Circle(this, b2_kinematicBody, 12, 3.f, .15f, false);
+		entityMap["ballsColumn"] = Entity::Create_Box(this, b2_staticBody, 12.f, 1.5f, 0.1f, 1.5f, 0.f, true);
+		entityMap["rotatedBox_r"] = Entity::Create_Box(this, b2_dynamicBody, 12.55f, 3.5f, 0.8f, 0.1f, 0.7854f, false);
+		entityMap["rotatedBox_l"] = Entity::Create_Box(this, b2_dynamicBody, 11.45f, 3.5f, 0.8f, 0.1f, -0.7854f, false);
 
 		// Uniones del contenedor de las bolas
-		Entity::create_revolute_joint(this, entityMap["containerJoint"]->getBody(), entityMap["rotatedBox_r"]->getBody(), true);
-		Entity::create_revolute_joint(this, entityMap["containerJoint"]->getBody(), entityMap["rotatedBox_l"]->getBody(), true);
+		Entity::Create_Revolute_Joint(this, entityMap["containerJoint"]->getBody(), entityMap["rotatedBox_r"]->getBody(), true);
+		Entity::Create_Revolute_Joint(this, entityMap["containerJoint"]->getBody(), entityMap["rotatedBox_l"]->getBody(), true);
 
         // Interactuables bolas (Ultimo parametro, numero de bolas)
         Entity::create_balls(this, b2_dynamicBody, 12, 4, 0.15f, false, 7);
 
         // Ascensor        
-        entityMap["elevator"] = Entity::create_box(this, b2_kinematicBody, 14.f, 1.f, 1, .12f,0.f, false);
+        entityMap["elevator"] = Entity::Create_Box(this, b2_kinematicBody, 14.f, 1.f, 1, .12f,0.f, false);
 		
 		// Coche
 		createCar();
@@ -202,43 +202,43 @@ namespace operations
 		constexpr float top = 7.50f;
 		constexpr float bottom = 0.01f;
 
-		Entity::create_edge(this, b2_staticBody, left, bottom, right, bottom, false);
-		Entity::create_edge(this, b2_staticBody, left, bottom, left, top, false);
-		Entity::create_edge(this, b2_staticBody, left, top, right, top, false);
-		Entity::create_edge(this, b2_staticBody, right, bottom, right, top, false);
+		Entity::Create_Edge(this, b2_staticBody, left, bottom, right, bottom, false);
+		Entity::Create_Edge(this, b2_staticBody, left, bottom, left, top, false);
+		Entity::Create_Edge(this, b2_staticBody, left, top, right, top, false);
+		Entity::Create_Edge(this, b2_staticBody, right, bottom, right, top, false);
 	}
 
 	// Rampas de la escena
 	void Scene::createRamp()
 	{
 		
-		Entity::create_edge(this, b2_staticBody, 2.32f, 2.41f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 2.72f, 2.15f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 3.1f, 1.72f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 3.5f, 1.3f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 2.32f, 2.41f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 2.72f, 2.15f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 3.1f, 1.72f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 3.5f, 1.3f, 0.3f, 0.1f, false);
 
-		Entity::create_edge(this, b2_staticBody, 3.95f, 1.f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 4.4f, 0.85f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 3.95f, 1.f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 4.4f, 0.85f, 0.3f, 0.1f, false);
 
-		Entity::create_edge(this, b2_staticBody, 4.9f, 0.76f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 5.5f, 0.75f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 6.f, 0.9f, 0.3f, 0.1f, false);
-		Entity::create_edge(this, b2_staticBody, 6.55f, 1.15f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 4.9f, 0.76f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 5.5f, 0.75f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 6.f, 0.9f, 0.3f, 0.1f, false);
+		Entity::Create_Edge(this, b2_staticBody, 6.55f, 1.15f, 0.3f, 0.1f, false);
 	}
 
 	// Coche
 	void Scene::createCar() 
 	{
 		// Cuerpo coche
-		entityMap["carBaseShape"] = Entity::create_carBaseShape(this, b2_dynamicBody, 0.10f, 2.5f);
-		entityMap["baseCarBox"] = Entity::create_box(this, b2_dynamicBody, 0.6f, 2.6f, 0.5f, 0.05f, 0.f, false);
-		Entity::create_revolute_joint(this, entityMap["carBaseShape"]->getBody(), entityMap["baseCarBox"]->getBody(), false);
+		entityMap["carBaseShape"] = Entity::Create_CarBaseShape(this, b2_dynamicBody, 0.10f, 2.5f);
+		entityMap["baseCarBox"] = Entity::Create_Box(this, b2_dynamicBody, 0.6f, 2.6f, 0.5f, 0.05f, 0.f, false);
+		Entity::Create_Revolute_Joint(this, entityMap["carBaseShape"]->getBody(), entityMap["baseCarBox"]->getBody(), false);
 
 		// Ruedas coche
-		entityMap["rightWheelCar"] = Entity::create_circle(this, b2_dynamicBody, 1.f, 2.4f, .15f, false);
-		rightWheelJoint = Entity::create_wheel_joint(this, entityMap["baseCarBox"]->getBody(), entityMap["rightWheelCar"]->getBody(), 0.0f, 2000.f, true);
-		entityMap["leftWheelCar"] = Entity::create_circle(this, b2_dynamicBody, 0.2f, 2.4f, .15f, false);
-		leftWheelCarJoint = Entity::create_wheel_joint(this, entityMap["baseCarBox"]->getBody(), entityMap["leftWheelCar"]->getBody(), 0.0f, 2000.f, true);
+		entityMap["rightWheelCar"] = Entity::Create_Circle(this, b2_dynamicBody, 1.f, 2.4f, .15f, false);
+		rightWheelJoint = Entity::Create_Wheel_Joint(this, entityMap["baseCarBox"]->getBody(), entityMap["rightWheelCar"]->getBody(), 0.0f, 2000.f, true);
+		entityMap["leftWheelCar"] = Entity::Create_Circle(this, b2_dynamicBody, 0.2f, 2.4f, .15f, false);
+		leftWheelCarJoint = Entity::Create_Wheel_Joint(this, entityMap["baseCarBox"]->getBody(), entityMap["leftWheelCar"]->getBody(), 0.0f, 2000.f, true);
 	}
 
 	// Modificamos la velocidad de las ruedas acorde al mismo parametro

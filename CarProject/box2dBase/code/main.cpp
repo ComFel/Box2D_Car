@@ -27,9 +27,6 @@
 
 using namespace sf;
 using namespace std;
-using namespace operations;
-
-
 
 int main ()
 {
