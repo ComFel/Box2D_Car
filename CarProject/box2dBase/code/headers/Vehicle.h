@@ -22,7 +22,6 @@
 using namespace std;
 using namespace sf;
 
-
 #pragma once
 
 

@@ -24,7 +24,7 @@
 
 using namespace std;
 using namespace sf;
-
+using namespace miCarBox;
 
    
     //Constructor de algunos elementos de la escena

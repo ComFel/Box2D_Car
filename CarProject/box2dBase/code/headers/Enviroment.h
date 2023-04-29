@@ -36,16 +36,35 @@ public:
     //Crear un box estático, ademas, con el parámetro lenght podemos de una realizar varias iteraciones, como por ejemplo para crear el suelo plano en ambos extremos.
     void CreateStaticBox(b2World& physics_world, float xStart, float yStart, float xEnd, float yEnd, int length);
 
-    //Con la anterior función, se usa para crear la curva del inicio de la escena                                               ----------- try chain shape
+    //Con la anterior función, se usa para crear la curva del inicio de la escena             
     void CreateCurve(b2World& physics_world);//, float xStart, float yStart, float xEnd, float yEnd,int length, float angle)
 
     //Deprecated
     void CreateRevJoint(b2World& physics_world, float x, float y, b2Body* platform);
 
     //Estructura que sujeta las bolas a recoger,así como la ref para dejarlas caer
+    /**
+     * 
+     * 
+     * \param physics_world
+     * \param bodytype
+     * \param xStart
+     * \param yStart
+     * \param angle
+     * \param length
+     * \return 
+     */
     b2Body* CreateBallContainer(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle, int length);
 
     //Estructura que recoge las bolas a despues de que el coche las suelte
+    /**
+     * 
+     * \param physics_world
+     * \param bodytype
+     * \param xStart
+     * \param yStart
+     * \param angle
+     */
     void CreateBalleReciever(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle);
 };
 

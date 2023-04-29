@@ -8,14 +8,12 @@
 #pragma once
 
 #include "headers/Scene.h"
-#include "headers/operations.h"
 #include "headers/Entity.h"
 
 using namespace sf;
 using namespace std;
 
-namespace operations
-{
+	
 	// Constructor de la escena, se encarga de cargar todas las entidades(objetos) que se renderizan y usan en el juego
 	Scene::Scene(b2Vec2 gravity, RenderWindow* window)
 	{
@@ -259,5 +257,5 @@ namespace operations
 		rightWheelJoint->SetMotorSpeed(0);
 		leftWheelCarJoint->SetMotorSpeed(0);
 	}
-}
+
 

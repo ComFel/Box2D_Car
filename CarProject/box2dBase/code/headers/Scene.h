@@ -10,13 +10,15 @@
 #pragma once
 
 #include <box2d/box2d.h>
-#include "Entity.h"
 #include <memory>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include "operations.h"
 
 using namespace sf;
 using namespace std;
+using namespace miCarBox;
+
 
 class Entity;
 
@@ -34,7 +36,8 @@ public:
 	bool elevetarSeen = false;
 	bool elevetarActive = false;
 
-public:
+	Scene() = default;
+
 	// Constructor de la escena con las entidades necesarias
 	Scene(b2Vec2 gravity, RenderWindow* window);
 

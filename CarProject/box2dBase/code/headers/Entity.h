@@ -1,4 +1,4 @@
-// 
+
 // Basado en un código de dominio público de:
 // angel.rodriguez@esne.edu
 // 2021.03+
@@ -12,7 +12,6 @@
 #include <box2d/box2d.h>
 #include <memory>
 #include "Scene.h"
-
 
 using namespace std;
 
