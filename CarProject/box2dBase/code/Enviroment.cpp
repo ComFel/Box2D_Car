@@ -1,32 +1,18 @@
-
-
-
-
 // Modificaiones del mismo por:
 // felipevm07@gmail.com
-// 2022.03
-//
-// Controles:
+// 2023.06
 //
 //   
 
 #pragma once
 
-#include <ciso646>
-#include <memory>
-#include <vector>
-#include <Box2D/Box2D.h>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
 #include "headers/Enviroment.h"
-#include "headers/operations.h"
-
 
 using namespace std;
 using namespace sf;
-using namespace miCarBox;
 
-   
+namespace miCarBox
+{
     //Constructor de algunos elementos de la escena
     Enviroment::Enviroment(b2World& physics_world)
     {
@@ -38,21 +24,21 @@ using namespace miCarBox;
     };
 
     //Crear margenes de la escena
-    void CreateMargins(b2World& physics_world)
+    void Enviroment::CreateMargins(b2World& physics_world)
     {
         constexpr float left = 0.01f;
         constexpr float right = 15.00f;
         constexpr float top = 7.50f;
         constexpr float bottom = 0.01f;
 
-        Create_Edge(physics_world, b2_staticBody, left, bottom, right, bottom);
+        miCarBox::Create_Edge(physics_world, b2_staticBody, left, bottom, right, bottom);
         Create_Edge(physics_world, b2_staticBody, left, bottom, left, top);
         Create_Edge(physics_world, b2_staticBody, left, top, right, top);
         Create_Edge(physics_world, b2_staticBody, right, bottom, right, top);
     };
 
     //Crear un box estático, ademas, con el parámetro lenght podemos de una realizar varias iteraciones, como por ejemplo para crear el suelo plano en ambos extremos.
-    void CreateStaticBox(b2World& physics_world, float xStart, float yStart, float xEnd, float yEnd, int length)
+    void Enviroment::CreateStaticBox(b2World& physics_world, float xStart, float yStart, float xEnd, float yEnd, int length)
     {
         for (size_t i = 0; i < length; i++)
         {
@@ -62,7 +48,7 @@ using namespace miCarBox;
     };       
 
     //Con la anterior función, se usa para crear la curva del inicio de la escena                                               ----------- try chain shape
-    void CreateCurve(b2World& physics_world)//, float xStart, float yStart, float xEnd, float yEnd,int length, float angle)
+    void Enviroment::CreateCurve(b2World& physics_world)//, float xStart, float yStart, float xEnd, float yEnd,int length, float angle)
     {
         CreateRotatedBox(physics_world, b2_staticBody, 2.32f, 2.41f, 0.3f, 0.1f, -0.32f);
         CreateRotatedBox(physics_world, b2_staticBody, 2.72f, 2.15f, 0.3f, 0.1f, -0.78f);
@@ -80,7 +66,7 @@ using namespace miCarBox;
     };
 
     //Deprecated
-    void CreateRevJoint(b2World& physics_world, float x, float y, b2Body* platform)
+    void Enviroment::CreateRevJoint(b2World& physics_world, float x, float y, b2Body* platform)
     {
         auto* box_anchor = Create_Box(physics_world, b2_staticBody, x, y, 0.1f, 0.1f);
         //auto* box_platform = Create_Box(physics_world, b2_dynamicBody, x, y, 1.4f, 0.1f);
@@ -91,7 +77,7 @@ using namespace miCarBox;
     };
 
     //Estructura que sujeta las bolas a recoger,así como la ref para dejarlas caer
-    b2Body* CreateBallContainer(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle, int length)
+    b2Body* Enviroment::CreateBallContainer(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle, int length)
     {
         //Creamos la joint aqui            
         auto* verticalLeftBox = CreateRotatedBox(physics_world, b2_kinematicBody, xStart, yStart, 0.1f, 1.f, -angle);
@@ -110,7 +96,7 @@ using namespace miCarBox;
     }
 
     //Estructura que recoge las bolas a despues de que el coche las suelte
-    void CreateBalleReciever(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle)
+    void Enviroment::CreateBalleReciever(b2World& physics_world, b2BodyType bodytype, float xStart, float yStart, float angle)
     {
         CreateRotatedBox(physics_world, b2_kinematicBody, xStart, yStart, 0.1f, 0.8f, -angle);
         CreateRotatedBox(physics_world, b2_kinematicBody, xStart + 0.9f, yStart, 0.1f, 0.8f, angle);
@@ -118,6 +104,5 @@ using namespace miCarBox;
         Create_Box(physics_world, b2_kinematicBody, xStart + 1.9f, yStart + 0.6f, 0.6f, 0.1f);
 
     };
-    
 
-
+}

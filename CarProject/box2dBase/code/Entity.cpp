@@ -5,20 +5,19 @@
 // 
 // Modificaiones del mismo por:
 // felipevm07@gmail.com
-// 2022.06
+// 2023.06
 
 #pragma once
 
-#include <box2d/box2d.h>
-#include <memory>
 #include "headers/Entity.h"
 
-using namespace sf;
+//using namespace sf;
 using namespace std;
 
-namespace operations
+namespace miCarBox 
 {
-    shared_ptr<Entity> Create_Edge(Scene* scene, b2BodyType body_type, float x0, float y0, float x1, float y1, bool isSensor)
+
+    shared_ptr<Entity> Entity::Create_Entity_Edge(Scene* scene, b2BodyType body_type, float x0, float y0, float x1, float y1, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -26,7 +25,7 @@ namespace operations
         b2BodyDef body_definition;
 
         body_definition.type = body_type;
-        body_definition.position.Set(0.f, 0.f); 
+        body_definition.position.Set(0.f, 0.f);
 
         body->rigidBody = scene->get_world().CreateBody(&body_definition);
 
@@ -34,7 +33,7 @@ namespace operations
         b2EdgeShape body_shape;
 
         // Coordenadas locales respecto al centro del body
-        body_shape.SetTwoSided(b2Vec2(x0, y0), b2Vec2(x1, y1)); 
+        body_shape.SetTwoSided(b2Vec2(x0, y0), b2Vec2(x1, y1));
 
         b2FixtureDef body_fixture;
 
@@ -47,9 +46,9 @@ namespace operations
         body->rigidBody->CreateFixture(&body_fixture);
 
         return body;
-    }    
-    
-    shared_ptr<Entity> Create_Circle(Scene* scene, b2BodyType body_type, float x, float y, float radius, bool isSensor)
+    }
+
+    shared_ptr<Entity> Entity::Create_Entity_Circle(Scene* scene, b2BodyType body_type, float x, float y, float radius, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -57,7 +56,7 @@ namespace operations
         b2BodyDef body_definition;
 
         body_definition.type = body_type;
-        body_definition.position.Set(x, y); 
+        body_definition.position.Set(x, y);
 
         body->rigidBody = scene->get_world().CreateBody(&body_definition);
 
@@ -77,8 +76,8 @@ namespace operations
 
         return body;
     }
-        
-    shared_ptr<Entity> Create_Box(Scene* scene, b2BodyType body_type, float x, float y, float width, float height, float radians, bool isSensor)
+
+    shared_ptr<Entity> Entity::Create_Entity_Box(Scene* scene, b2BodyType body_type, float x, float y, float width, float height, float radians, bool isSensor)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -86,7 +85,7 @@ namespace operations
         b2BodyDef body_definition;
 
         body_definition.type = body_type;
-        body_definition.position.Set(x, y); 
+        body_definition.position.Set(x, y);
 
         body->rigidBody = scene->get_world().CreateBody(&body_definition);
 
@@ -111,7 +110,7 @@ namespace operations
         return body;
     }
 
-    b2RevoluteJoint* Create_Revolute_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, bool enabledMotor)
+    b2RevoluteJoint* Entity::Create_Entity_Revolute_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, bool enabledMotor)
     {
         b2RevoluteJointDef revolut;
 
@@ -123,8 +122,8 @@ namespace operations
 
         return dynamic_cast<b2RevoluteJoint*>(scene->get_world().CreateJoint(&revolut));
     }
-    
-    b2WheelJoint* Create_Wheel_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, float motorSpeed, float torque, bool isEnabled)
+
+    b2WheelJoint* Entity::Create_Wheel_Joint(Scene* scene, b2Body* bodyA, b2Body* bodyB, float motorSpeed, float torque, bool isEnabled)
     {
         b2WheelJointDef wheel;
 
@@ -140,7 +139,7 @@ namespace operations
         return dynamic_cast<b2WheelJoint*>(scene->get_world().CreateJoint(&wheel));
     }
 
-    shared_ptr<Entity> Create_CarBaseShape(Scene* scene, b2BodyType body_type, float x, float y)
+    shared_ptr<Entity> Entity::Create_CarBaseShape(Scene* scene, b2BodyType body_type, float x, float y)
     {
         shared_ptr < Entity > body(new Entity());
 
@@ -148,7 +147,7 @@ namespace operations
         b2BodyDef body_definition;
 
         body_definition.type = body_type;
-        body_definition.position.Set(x, y); 
+        body_definition.position.Set(x, y);
 
         body->rigidBody = scene->get_world().CreateBody(&body_definition);
 

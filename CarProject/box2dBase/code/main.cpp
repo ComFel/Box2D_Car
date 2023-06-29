@@ -5,7 +5,7 @@
 // 
 // Modificaiones del mismo por:
 // felipevm07@gmail.com
-// 2022.03
+// 2023.06
 // 
 // 
 // Controles:
@@ -13,27 +13,21 @@
 // R para reiniciar posicion
 // Espacio para frenar
 
-#include <ciso646>
-#include <memory>
-#include <vector>
-#include <Box2D/Box2D.h>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
-#include "headers/operations.h"
-#include "headers/Enviroment.h"
-#include "headers/Vehicle.h"
-#include "headers/Entity.h"
 
+#include "headers/Scene.h"
+#include "headers/operations.h"
 
 using namespace sf;
 using namespace std;
+using namespace miCarBox;
+
 
 int main ()
 {
     constexpr auto window_width  = 1500u;
     constexpr auto window_height = 750u;
 
-    RenderWindow window(VideoMode(window_width, window_height), "Practica_1 : Coche", Style::Titlebar | Style::Close, ContextSettings(32));
+    RenderWindow window(VideoMode(window_width, window_height), "Practica_1_Anim_3D : Coche", Style::Titlebar | Style::Close, ContextSettings(32));
 
     window.setVerticalSyncEnabled (true);
 
@@ -48,7 +42,7 @@ int main ()
     float stopCar = 0.f;
 
     // Se ejecuta el bucle principal de la animación:
-    Input_Status status;
+    miCarBox::Input_Status status;
     
     const float target_fps  = 60.f;                     // Cuántos fotogramas por segundo se busca conseguir
     const float target_time = 1.f / target_fps;         // Duración en segundos de un fotograma a la tasa deseada
